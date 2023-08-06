@@ -32,10 +32,3 @@ In this platform fighter game, players control characters with distinct abilitie
 **Player 2:**
 - Movement: Arrow Up (Jump), Arrow Left (Move Left), Arrow Right (Move Right)
 - Attack: Arrow Down
-
-
-### Technologies Used
-
-- HTML5
-- CSS3
-- JavaScript
