@@ -99,6 +99,36 @@ function objectCollision({object1, object2}){
     )
 }
 
+function winner({player, enemy, timerId}) {
+    clearTimeout(timerId)
+    document.querySelector('#displayText').style.display = 'flex'
+    if (player.health === enemy.health) {
+        console.log('tie')
+        document.querySelector('#displayText').innerHTML = 'TIE!'
+    } else if (player.health > enemy.health) {
+        console.log('player wins')
+        document.querySelector('#displayText').innerHTML = 'PLAYER 1 WINS!'
+    } else if (player.health < enemy.health) {
+        console.log('enemy wins')
+        document.querySelector('#displayText').innerHTML = 'PLAYER 2 WINS!'
+    }
+}
+
+let timer = 60
+let timerId
+function countdown() {
+    if (timer > 0) {
+        timerId = setTimeout(countdown, 1000)
+        timer--
+        document.querySelector('#timer').innerHTML = timer
+    } 
+    if (timer === 0) {
+        winner({player, enemy})
+    }
+}
+
+countdown()
+
 function animate() {
     window.requestAnimationFrame(animate)
     c.fillStyle = 'black'
@@ -136,6 +166,11 @@ function animate() {
         player.health -= 20
         document.querySelector('#playerHealth').style.width =  player.health + '%'    
         console.log('enemy attack')
+    }
+
+    // Detect winner
+    if (player.health <= 0 || enemy.health <= 0) {
+        winner({player, enemy, timerId})
     }
 }
 
