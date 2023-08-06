@@ -25,6 +25,7 @@ class Sprite {
         }
         this.color = color
         this.isAttacking
+        this.health = 100
     }
 
     draw() {
@@ -125,11 +126,15 @@ function animate() {
 
     // Detect collision
     if (objectCollision({object1: player, object2: enemy}) && player.isAttacking) {
-        player.isAttacking = false    
+        player.isAttacking = false
+        enemy.health -= 20
+        document.querySelector('#enemyHealth').style.width =  enemy.health + '%'
         console.log('player attack')
     }
     if (objectCollision({object1: enemy, object2: player}) && enemy.isAttacking) {
-        enemy.isAttacking = false    
+        enemy.isAttacking = false
+        player.health -= 20
+        document.querySelector('#playerHealth').style.width =  player.health + '%'    
         console.log('enemy attack')
     }
 }
