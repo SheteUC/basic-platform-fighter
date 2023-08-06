@@ -34,7 +34,7 @@ In this platform fighter game, players control characters with distinct abilitie
 - Attack: Arrow Down
 
 
-## Technologies Used
+### Technologies Used
 
 - HTML5
 - CSS3
